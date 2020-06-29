@@ -1,0 +1,83 @@
+[cloudera@quickstart ~]$ ls
+cloudera-manager  create   Documents  eclipse                     express-deployment.json  idea      kerberos  moviesdb.java  new file  Pictures  sqoop                student.java    students.java     Templates  Videos
+cm_api.py         Desktop  Downloads  enterprise-deployment.json  FacebookFriends.jar      intellij  lib       Music          parcels   Public    student_export.java  students2.java  temperature.java  use        workspace
+[cloudera@quickstart ~]$ gedit facebookinput.txt
+[cloudera@quickstart ~]$ ls
+cloudera-manager  create   Documents  eclipse                     express-deployment.json  facebookinput.txt  intellij  lib            Music     parcels   Public  student_export.java  students2.java  temperature.java  use     workspace
+cm_api.py         Desktop  Downloads  enterprise-deployment.json  FacebookFriends.jar      idea               kerberos  moviesdb.java  new file  Pictures  sqoop   student.java         students.java   Templates         Videos
+[cloudera@quickstart ~]$ hadoop fs -mkdir project1
+[cloudera@quickstart ~]$ hadoop fs -put facebookinput.txt  project1/input
+[cloudera@quickstart ~]$ hadoop jar FacebookFriends.jar FaceBookMutualFriends project1/input
+^[[A^Z
+[1]+  Stopped                 hadoop jar FacebookFriends.jar FaceBookMutualFriends project1/input
+[cloudera@quickstart ~]$ hadoop jar FacebookFriends.jar FaceBookMutualFriends project1/input  project1/output
+20/06/28 21:55:05 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+20/06/28 21:55:09 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+20/06/28 21:55:14 INFO input.FileInputFormat: Total input paths to process : 1
+20/06/28 21:55:16 INFO mapreduce.JobSubmitter: number of splits:1
+20/06/28 21:55:20 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1593389099434_0001
+20/06/28 21:55:30 INFO impl.YarnClientImpl: Submitted application application_1593389099434_0001
+20/06/28 21:55:31 INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_1593389099434_0001/
+20/06/28 21:55:31 INFO mapreduce.Job: Running job: job_1593389099434_0001
+20/06/28 21:56:55 INFO mapreduce.Job: Job job_1593389099434_0001 running in uber mode : false
+20/06/28 21:56:56 INFO mapreduce.Job:  map 0% reduce 0%
+20/06/28 21:57:33 INFO mapreduce.Job:  map 100% reduce 0%
+20/06/28 21:57:41 INFO mapreduce.Job:  map 100% reduce 100%
+20/06/28 21:57:42 INFO mapreduce.Job: Job job_1593389099434_0001 completed successfully
+20/06/28 21:57:42 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=210
+		FILE: Number of bytes written=286875
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=176
+		HDFS: Number of bytes written=88
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=20465
+		Total time spent by all reduces in occupied slots (ms)=5521
+		Total time spent by all map tasks (ms)=20465
+		Total time spent by all reduce tasks (ms)=5521
+		Total vcore-milliseconds taken by all map tasks=20465
+		Total vcore-milliseconds taken by all reduce tasks=5521
+		Total megabyte-milliseconds taken by all map tasks=20956160
+		Total megabyte-milliseconds taken by all reduce tasks=5653504
+	Map-Reduce Framework
+		Map input records=1
+		Map output records=10
+		Map output bytes=184
+		Map output materialized bytes=210
+		Input split bytes=125
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=10
+		Reduce shuffle bytes=210
+		Reduce input records=10
+		Reduce output records=10
+		Spilled Records=20
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=85
+		CPU time spent (ms)=1700
+		Physical memory (bytes) snapshot=457048064
+		Virtual memory (bytes) snapshot=3148226560
+		Total committed heap usage (bytes)=380108800
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=51
+	File Output Format Counters 
+		Bytes Written=88
+[cloudera@quickstart ~]$ 

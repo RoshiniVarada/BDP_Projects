@@ -1,0 +1,35 @@
+//Making directory inside hdfs
+
+hadoop fs -mkdir project1
+
+
+//loading the input data
+
+hadoop fs -put facebookinput.txt  project1/input
+
+
+//executing the jar file
+
+hadoop jar FacebookFriends.jar FaceBookMutualFriends project1/input  project1/output
+
+
+Here 
+
+"FacebookFriends.jar" denotes the name of the jar file.
+
+"FaceBookMutualFriends" denotes the name of the class in which the main method is present
+
+"project1/input" denotes the path of the input file
+
+"project1/output" denotes the path of the output file
+
+
+
+
+
+
+
+
+
+
+
