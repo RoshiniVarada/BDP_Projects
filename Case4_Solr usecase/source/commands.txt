@@ -1,0 +1,36 @@
+keyword matching:
+Eye_color: blue
+
+AND:
+Hair_color: "No Hair" AND Publisher_I: "DC Comics"
+
+OR:
+Hair_color:"No Hair" AND Publisher_I:"DC Comics" OR Eye_color:blue
+
+NOT:
+NAME_I:Angel -Hair_color:black
+
+Wildcard:
+Eye_color:yellow*
+
+proximity:
+Hair_color:"Blond"~1
+
+Boolean multiple clauses:
+(+agility_I:TRUE +agility_I:(FALSE faceting)) OR
+(+Lantern_Power_Ring:TRUE +Lantern_Power_Ring:(TRUE faceting))
+
+Boosted:
+Dimensional_Awareness:(TRUE^10 TRUE)
+
+Range:
+Weight_I: [95.0 TO *]
+
+Facet:
+q=*
+&facet=True
+&facet.field=Skin_color
+
+q=*
+&facet=Female
+&facet.field=Height_I
