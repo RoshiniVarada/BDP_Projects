@@ -1,0 +1,72 @@
+//Entering into hive:
+
+ Hive 
+
+//Create database called hivedb in hive using below command:
+
+create database hivedb;
+
+//After creating the database, to use the same for creating the table by using below command:
+
+use hivedb;
+
+//Create a table called super_heroes:
+
+create table heroes_info(id int, name string, gender string, eyecolor string, race string, haircolor string, height int, publisher string, skincolor string, alignment string, weight int) row format delimited fields terminated by ‘,’ stored as textfile;
+
+//Load the heroes_information.csv into the newly created table super_heroes:
+
+load data local inpath‘/home/cloudera/Downloads/heroes_information’ into table super_heroes; 
+
+//Query the super_heroes table to check the data has been loaded into table using below command: 
+
+select * from heroes_info; Screenshot
+
+//Create another table called super_heroes_power_data
+
+create table super_heroes_power_data(hero_names string, Agility, string, AcceleratedHealing string, LanternPowerRing string, DimensionalAwareness string,ColdResistance  string, Durability string,
+Stealth  string, EnergyAbsorption  string, Flight string) row format delimited fields terminated by ',' stored as textfile;
+
+//Load the super_hero_powers.csv into the newly created table super_heroes_power_data:
+
+load data local inpath‘/home/cloudera/Downloads/super_hero_powers’ into table super_heroes_power_data; 
+
+//Query the super_heroes_power_data table to check the data has been loaded into table using below command:
+
+select * from super_heroes_power_data
+
+//Query1:
+Select sum(weight) from super_heroes where height>100;
+
+//Query2:
+Select name,height from super_heroes order by height desc limit 10;
+
+//Query3:
+Select concat(gender,"--",height) from super_heroes where haircolor="No Hair";
+
+//Query4:
+Select avg(height) from super_heroes where gender="Female";
+
+//Query5:
+Select name from super_heroes where height between 150 and 160;
+
+//Query6:
+Select gender, case when gender = 'Male' then 'male_gender' else 'female_gender' end from super_heroes;
+
+//Query7:
+Select a.name,a.haircolor,b.energy_absorption from super_heroes a join super_heroes_power_data b on a.name=b.hero_name where b.energy_absorption == "TRUE";
+
+//Query8:
+Create table table_joined (hero_name string, eyecolor string, agility string, durabililty string)
+row format delimited
+fields terminated by ','
+stored as textfile;
+
+Insert into table table_joined select a.name,a,eyecolor,b.agility,b.durability from heroes_info a join super_heroes_power_data b on a.name=b.hero_name;
+Select *from joined_table;
+
+//Query9:
+Select count(id) from super_heroes where (height between 170 and 200) and (weight between 50 and 100);
+
+//Query10:
+select name from super_heroes where publisher like '%comics%';
