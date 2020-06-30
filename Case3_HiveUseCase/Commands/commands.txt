@@ -2,11 +2,7 @@
 
  Hive 
 
-//Create database called hivedb in hive using below command:
-
-create database hivedb;
-
-//After creating the database, to use the same for creating the table by using below command:
+To use the Hive database for creating the table by using below command:
 
 use hivedb;
 
