@@ -1,3 +1,24 @@
+Dataset1:
+
+Create schema configuration:
+solrctl instancedir --generate /tmp/hero4
+gedit /tmp/hero4/conf/schema.xml
+
+Create instance directory:
+solrctl instancedir --create hero4 /tmp/hero4
+solrctl collection --create hero4
+
+Dataset2:
+
+Create schema configuration:
+solrctl instancedir --generate /tmp/sh
+gedit /tmp/sh/conf/schema.xml
+
+Create instance directory:
+solrctl instancedir --create sh /tmp/hero4
+solrctl collection --create sh
+
+
 keyword matching:
 Eye_color: blue
 
